@@ -1,0 +1,34 @@
+﻿@page "/bibliotek"
+
+@if (Books != null)
+{
+    <table class="table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <td>ISBN</td>
+                <td>Tittel</td>
+                <td>Forfatter</td>
+                <td>Forlag</td>
+                <td>UtgittÅr</td>
+                <td>AntallSider</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var book in ShowAllBooks())
+            {
+                <tr>
+                    <td>@book.ISBN</td>
+                    <td>@book.Tittel</td>
+                    <td>@book.Forfatter</td>
+                    <td>@book.Forlag</td>
+                    <td>@book.UtgittÅr</td>
+                    <td>@book.AntallSider</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No books found.</p>
+}

@@ -7,7 +7,8 @@ public class BokContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlite("Data Source=Bibliotek_gruppe9.db");
-
+        string dbPath = Path.Combine("Data", "Bibliotek_gruppe9.db");
+        optionsBuilder.UseSqlite($"Data Source={dbPath}");
     }
+
 }

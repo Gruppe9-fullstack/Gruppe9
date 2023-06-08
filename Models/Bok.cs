@@ -9,7 +9,7 @@ namespace Gruppe9.Models
         public string Tittel { get; set; } = String.Empty;
         public string Forfatter { get; set; } = String.Empty;
         public string Forlag { get; set; } = String.Empty;
-        public int Utgitt { get; set; }
+        public int UtgittÅr { get; set; }
         public int AntallSider { get; set; }
 
     }
