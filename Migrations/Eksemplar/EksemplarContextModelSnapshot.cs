@@ -5,10 +5,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Gruppe9.Migrations
+namespace Gruppe9.Migrations.Eksemplar
 {
-    [DbContext(typeof(BokContext))]
-    partial class BokContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(EksemplarContext))]
+    partial class EksemplarContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -45,17 +45,13 @@ namespace Gruppe9.Migrations
 
             modelBuilder.Entity("Gruppe9.Models.Eksemplar", b =>
                 {
-                    b.Property<int>("EksNr")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("ISBN")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("EksNr");
+                    b.Property<int>("EksNr")
+                        .HasColumnType("INTEGER");
 
-                    b.HasIndex("ISBN");
+                    b.HasKey("ISBN", "EksNr");
 
                     b.ToTable("Eksemplar");
                 });

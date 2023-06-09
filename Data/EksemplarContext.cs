@@ -7,6 +7,18 @@ public class EksemplarContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlite("Data Source=Bibliotek_gruppe9.db");
+        string dbPath = Path.Combine("Data", "Bibliotek_gruppe9.db");
+        optionsBuilder.UseSqlite($"Data Source={dbPath}");
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Eksemplar>()
+            .HasKey(e => new { e.ISBN, e.EksNr });
+
+        modelBuilder.Entity<Eksemplar>()
+            .HasOne(e => e.Bok)
+            .WithMany(b => b.Eksemplar)
+            .HasForeignKey(e => e.ISBN);
     }
 }

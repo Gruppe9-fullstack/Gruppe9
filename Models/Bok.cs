@@ -12,5 +12,7 @@ namespace Gruppe9.Models
         public int UtgittÅr { get; set; }
         public int AntallSider { get; set; }
 
+        public List<Eksemplar> Eksemplar { get; set; }
+
     }
 }
