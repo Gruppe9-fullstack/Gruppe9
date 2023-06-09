@@ -1,0 +1,76 @@
+﻿@page "/bibliotek"
+@using Gruppe9.Pages
+@inject NavigationManager NavigationManager
+
+<style>
+    .table-bordered {
+        border-collapse: collapse;
+    }
+
+    .table-bordered th,
+    .table-bordered td {
+        border: 1px solid black;
+        padding: 8px;
+    }
+
+    .bold-row {
+        font-weight: bold;
+        background-color: lightgray;
+    }
+    .button-container {
+        margin-top: 50px;
+    }
+</style>
+
+<tr class="bold-row" align="center" />
+
+@if (Books != null)
+{
+<div>
+    <table class="table-bordered" style="width:100%">
+        <thead>
+            <tr class="bold-row" align="center">
+                <td style="width:20%">ISBN</td>
+                <td style="width:20%">Tittel</td>
+                <td style="width:20%">Forfatter</td>
+                <td style="width:10%">Forlag</td>
+                <td style="width:5%">UtgittÅr</td>
+                <td style="width:5%">AntallSider</td>
+                <td style="width:20%"></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var book in ShowAllBooks())
+            {
+                <tr>
+                    <td>@book.ISBN</td>
+                    <td>@book.Tittel</td>
+                    <td>@book.Forfatter</td>
+                    <td>@book.Forlag</td>
+                    <td>@book.UtgittÅr</td>
+                    <td>@book.AntallSider</td>
+                    <td><button>Delete</button></td>
+                </tr>
+            }
+            <tr>
+                <td><input style="width:100%" type="text" name="ISBN" @bind="input[0]" /> </td>
+                <td><input style="width:100%" type="text" name="Tittel" @bind="input[1]" /> </td>
+                <td><input style="width:100%" type="text" name="Forfatter" @bind="input[2]" /> </td>
+                <td><input style="width:100%" type="text" name="Forlag" @bind="input[3]" /> </td>
+                <td><input style="width:100%" type="text" name="UtgittÅr" @bind="input[4]" /> </td>
+                <td><input style="width:100%" type="text" name="AntallSider" @bind="input[5]" /> </td>
+                <td><button @onclick="() => Add(input)">Legg til</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+    
+<div class="button-container">
+        <button>Update</button>
+    </div>
+}
+
+else
+{
+    <p>No books found.</p>
+}
